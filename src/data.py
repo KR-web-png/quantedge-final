@@ -3,6 +3,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import yfinance as yf
+import warnings
+warnings.filterwarnings("ignore", module="yfinance")
 
 TICKERS = ["SPY", "EFA", "EEM", "AGG", "GLD", "XLE", "XLK"]
 START, END = "2005-01-01", "2026-10-24"
@@ -41,4 +43,4 @@ if __name__ == "__main__":
     print(r.abs().stack().sort_values(ascending=False).head(10))
     from statsmodels.tsa.stattools import adfuller
     for c in r.columns:
-        print(c, "ADF p-value:", round(adfuller(r[c])[1], 4))
+        print(c, "ADF p-value:", round(adfuller(r[c], result_object=False)[1], 4))

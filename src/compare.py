@@ -3,6 +3,9 @@ import numpy as np
 import pandas as pd
 from src.data import load_returns
 
+pd.set_option("display.width", 200)
+pd.set_option("display.max_columns", None)
+
 r = load_returns()
 RF = 0.02   # PLACEHOLDER annual risk-free rate; we will replace it with the FRED T-bill
 
